@@ -1,49 +1,49 @@
 // Stack & Queue Program using ChainNode, by Youngwoo Kim, email: rdd0426@gmail.com
 // Directory
-// Line 7 ~ ? : declaration for classes 
-// Line ? ~ ? : main function.
+// Line 10 ~ 124 : declaration for classes & other functions
+// Line 126 ~ til the end : main function.
 #include <iostream>
-#include <iomanip>
+#include <iomanip> // ì…ì¶œë ¥ í˜•íƒœë¥¼ ì´ì˜ê²Œ í•˜ê¸°ìœ„í•´ setwì™€ leftë¥¼ ì‚¬ìš©í• ê²ƒì„.
 
 using namespace std;
 
 class ChainStack;
 class ChainQueue;
 class ChainNode {
-	friend class ChainStack; // friend ¼±¾ğÀ» ÅëÇØ Stack¿¡¼­ ChainNodeÀÇ ¸â¹ö º¯¼ö¿¡ Á¢±ÙÇÒ ¼ö ÀÖµµ·Ï.
-	friend class ChainQueue; // friend ¼±¾ğÀ» ÅëÇØ Queue¿¡¼­ ChainNodeÀÇ ¸â¹ö º¯¼ö¿¡ Á¢±ÙÇÒ ¼ö ÀÖµµ·Ï.
+	friend class ChainStack; // friend ì„ ì–¸ì„ í†µí•´ Stackì—ì„œ ChainNodeì˜ ë©¤ë²„ ë³€ìˆ˜ì— ì ‘ê·¼í•  ìˆ˜ ìˆë„ë¡.
+	friend class ChainQueue; // friend ì„ ì–¸ì„ í†µí•´ Queueì—ì„œ ChainNodeì˜ ë©¤ë²„ ë³€ìˆ˜ì— ì ‘ê·¼í•  ìˆ˜ ìˆë„ë¡.
 private:
-	int data; // Á¤¼ö µ¥ÀÌÅ¸¸¦ ÀúÀåÇÒ ¸â¹ö º¯¼ö.
-	ChainNode* next; // ´ÙÀ½ ³ëµå¸¦ °¡¸£Å°±â À§ÇÑ ChainNode Æ÷ÀÎÅÍ Çü º¯¼ö.
+	int data; // ì •ìˆ˜ ë°ì´íƒ€ë¥¼ ì €ì¥í•  ë©¤ë²„ ë³€ìˆ˜.
+	ChainNode* next; // ë‹¤ìŒ ë…¸ë“œë¥¼ ê°€ë¥´í‚¤ê¸° ìœ„í•œ ChainNode í¬ì¸í„° í˜• ë³€ìˆ˜.
 public:
-	ChainNode(int data = 0,ChainNode* next = 0) { this->next = next, this->data = data; } // »ı¼ºÀÚ.
+	ChainNode(int data = 0,ChainNode* next = 0) { this->next = next, this->data = data; } // ìƒì„±ì.
 };
 
 class ChainStack {
 private:
-	ChainNode* top; // ½ºÅÃÀÇ Á¦ÀÏ ¸¶Áö¸·¿¡ µé¾î¿Â °ªÀ» ÀúÀåÇÏ±â À§ÇÑ ChainNode Æ÷ÀÎÅÍÇü º¯¼ö.
+	ChainNode* top; // ìŠ¤íƒì˜ ì œì¼ ë§ˆì§€ë§‰ì— ë“¤ì–´ì˜¨ ê°’ì„ ì €ì¥í•˜ê¸° ìœ„í•œ ChainNode í¬ì¸í„°í˜• ë³€ìˆ˜.
 public:
-	ChainStack() { top = 0; } // »ı¼º½Ã topÀº ¾î´À µ¥ÀÌÅÍµµ °¡¸£Å°Áö ¾Êµµ·Ï NULLÀ» ÁØ´Ù.
-	void Push(const int&); // µ¥ÀÌÅÍ¸¦ ¹Ş¾Æ¼­ Stack¿¡ Ã¤¿ö³Ö´Â ¸â¹öÇÔ¼ö.
-	int* Pop(int&); // top¿¡ ÀúÀåµÈ µ¥ÀÌÅÍ¿¡ Á¢±ÙÇØ ÇØ´ç µ¥ÀÌÅÍ¸¦ Stack¿¡¼­ »èÁ¦, ¸¸¾à StackÀÌ ºñ¾îÀÖ´Ù¸é 0À» ¾Æ´Ï¶ó¸é 1À» Ãâ·ÂÇÏ°Ô ÇÔ.
-	void PrintS(); // Stack³»ÀÇ µ¥ÀÌÅ¸µéÀ» Ãâ·Â (LIFO¼ø).
+	ChainStack() { top = 0; } // ìƒì„±ì‹œ topì€ ì–´ëŠ ë°ì´í„°ë„ ê°€ë¥´í‚¤ì§€ ì•Šë„ë¡ NULLì„ ì¤€ë‹¤.
+	void Push(const int&); // ë°ì´í„°ë¥¼ ë°›ì•„ì„œ Stackì— ì±„ì›Œë„£ëŠ” ë©¤ë²„í•¨ìˆ˜.
+	int* Pop(int&); // topì— ì €ì¥ëœ ë°ì´í„°ì— ì ‘ê·¼í•´ í•´ë‹¹ ë°ì´í„°ë¥¼ Stackì—ì„œ ì‚­ì œ, ë§Œì•½ Stackì´ ë¹„ì–´ìˆë‹¤ë©´ 0ì„ ì•„ë‹ˆë¼ë©´ 1ì„ ì¶œë ¥í•˜ê²Œ í•¨.
+	void PrintS(); // Stackë‚´ì˜ ë°ì´íƒ€ë“¤ì„ ì¶œë ¥ (LIFOìˆœ).
 };
 
 class ChainQueue {
 private:
-	ChainNode* front, * rear; // Ã³À½°ú ³¡À» °¡¸£Å³ top°ú rear.
+	ChainNode* front, * rear; // ì²˜ìŒê³¼ ëì„ ê°€ë¥´í‚¬ topê³¼ rear.
 public:
-	ChainQueue() { front = rear = 0; } // »ı¼º½Ã¿¡´Â top°ú rear¿¡ NULLÀ» ÀúÀå.
-	void Push(const int&); // StackÀÇ ³¡¿¡ »õ·Î¿î µ¥ÀÌÅ¸¸¦ Ãß°¡.
-	int* Pop(int&); // StackÀÇ front¿¡ ÀúÀåµÈ µ¥ÀÌÅ¸¸¦ »©³¿.
-	void PrintQ(); // Queue³»ÀÇ µ¥ÀÌÅ¸µéÀ» Ãâ·Â (FIFO¼ø)
+	ChainQueue() { front = rear = 0; } // ìƒì„±ì‹œì—ëŠ” topê³¼ rearì— NULLì„ ì €ì¥.
+	void Push(const int&); // Stackì˜ ëì— ìƒˆë¡œìš´ ë°ì´íƒ€ë¥¼ ì¶”ê°€.
+	int* Pop(int&); // Stackì˜ frontì— ì €ì¥ëœ ë°ì´íƒ€ë¥¼ ë¹¼ëƒ„.
+	void PrintQ(); // Queueë‚´ì˜ ë°ì´íƒ€ë“¤ì„ ì¶œë ¥ (FIFOìˆœ)
 };
 
 void ChainStack:: Push(const int& x) {
-	top = new ChainNode(x, top); // next°¡ °¡¸£Å°´Â ¹æÇâ top -> Á¦ÀÏ Ã³À½ ³ëµå -> NULL ¹æÇâ.
+	top = new ChainNode(x, top); // nextê°€ ê°€ë¥´í‚¤ëŠ” ë°©í–¥ top -> ì œì¼ ì²˜ìŒ ë…¸ë“œ -> NULL ë°©í–¥.
 }
 
-int* ChainStack::Pop(int& retvalue) { // PPT¸¦ Âü°íÇÏ¿© ¸¸µé¾ú½À´Ï´Ù.
+int* ChainStack::Pop(int& retvalue) { // PPTë¥¼ ì°¸ê³ í•˜ì—¬ ë§Œë“¤ì—ˆìŠµë‹ˆë‹¤.
 	if (top == NULL) return 0;
 	ChainNode* delNode = top;
 	retvalue = top->data;
@@ -54,9 +54,9 @@ int* ChainStack::Pop(int& retvalue) { // PPT¸¦ Âü°íÇÏ¿© ¸¸µé¾ú½À´Ï´Ù.
 
 void ChainStack::PrintS() {
 	ChainNode* temp = top;
-	if (top == 0) cout << "½ºÅÃÀÌ ºñ¾îÀÖ½À´Ï´Ù." << endl; // topÀÌ °¡¸£Å°´Â ÁÖ¼Ò°¡ NULLÀÌ¶ó¸é ½ºÅÃÀÌ ºñ¾úÀ½.
-	else { // ½ºÅÃÀÇ °ªµéÀ» Ãâ·Â.
-		cout << "Stack(LIFO ¼ø): ";
+	if (top == 0) cout << "ìŠ¤íƒì´ ë¹„ì–´ìˆìŠµë‹ˆë‹¤." << endl; // topì´ ê°€ë¥´í‚¤ëŠ” ì£¼ì†Œê°€ NULLì´ë¼ë©´ ìŠ¤íƒì´ ë¹„ì—ˆìŒ.
+	else { // ìŠ¤íƒì˜ ê°’ë“¤ì„ ì¶œë ¥.
+		cout << "Stack(LIFO ìˆœ): ";
 		while (temp) {
 			cout << temp->data << " ";
 			temp = temp->next;
@@ -67,10 +67,10 @@ void ChainStack::PrintS() {
 
 void ChainQueue::Push(const int& x) {
 	if (front == 0) {
-		front = rear = new ChainNode(x, 0); // front°¡ NULL°ªÀ» °¡Áø´Ù¸é ÀÌ´Â Queue°¡ ºñ¾ú´Ù´Â ÀÇ¹Ì!.
+		front = rear = new ChainNode(x, 0); // frontê°€ NULLê°’ì„ ê°€ì§„ë‹¤ë©´ ì´ëŠ” Queueê°€ ë¹„ì—ˆë‹¤ëŠ” ì˜ë¯¸!.
 	}
 	else {
-		rear=rear->next = new ChainNode(x, 0); // next°¡ °¡¸£Å°´Â ¹æÇâ front -> rear ¹æÇâ.
+		rear=rear->next = new ChainNode(x, 0); // nextê°€ ê°€ë¥´í‚¤ëŠ” ë°©í–¥ front -> rear ë°©í–¥.
 	}
 }
 
@@ -78,16 +78,16 @@ int* ChainQueue::Pop(int& retvalue) {
 	if (front == NULL) return 0;
 	ChainNode* delNode = front;
 	retvalue = front->data;
-	front = front->next; // rear¿¡ ´ëÇÑ°ÍÀº ¹Ù²ãÁÙ ÇÊ¿ä°¡ ¾ø´Ù. ±× ÀÌÀ¯´Â Push¿¡¼­µµ Pop¿¡¼­µµ front¸¦ ÀÌ¿ëÇØ Queue_empty¸¦ ÆÇ´ÜÇß±â ¶§¹®.
+	front = front->next; // rearì— ëŒ€í•œê²ƒì€ ë°”ê¿”ì¤„ í•„ìš”ê°€ ì—†ë‹¤. ê·¸ ì´ìœ ëŠ” Pushì—ì„œë„ Popì—ì„œë„ frontë¥¼ ì´ìš©í•´ Queue_emptyë¥¼ íŒë‹¨í–ˆê¸° ë•Œë¬¸.
 	delete delNode;
 	return &retvalue;
 }
 
 void ChainQueue::PrintQ() {
 	ChainNode* temp = front;
-	if (front == 0)cout << "Å¥°¡ ºñ¾îÀÖ½À´Ï´Ù." << endl;
+	if (front == 0)cout << "íê°€ ë¹„ì–´ìˆìŠµë‹ˆë‹¤." << endl;
 	else {
-		cout << "Queue(FIFO ¼ø): ";
+		cout << "Queue(FIFO ìˆœ): ";
 		while (temp) {
 			cout << temp->data << " ";
 			temp = temp->next;
@@ -100,32 +100,32 @@ int* Input(int* n)
 {
 	int i = 0;
 	do {
-		if (i > 1) return 0; // i°¡ 2°¡ µÇ°Ô µÇ¸é ÀÌ´Â ¸í·É¾îÀÇ °³¼ö°¡ ÀÌ»óÇÏ°Ô Àü´ŞµÈ °ÍÀÌ¹Ç·Î NULL ¹İÈ¯.
-		cin >> n[i]; // ÀÔ·ÂÀ» ¹Ş¾Æ ³Ö´Â´Ù.
-		if (cin.fail()) return 0; // ÀÔ·ÂÀÇ ½ÇÆĞ½Ã cin.fail()ÀÌ 1ÀÇ °ªÀ» ¹İÈ¯ÇÑ´Ù. ÀÔ·ÂÀÇ ½ÇÆĞ¶ó¸é return 0!
+		if (i > 1) return 0; // iê°€ 2ê°€ ë˜ê²Œ ë˜ë©´ ì´ëŠ” ëª…ë ¹ì–´ì˜ ê°œìˆ˜ê°€ ì´ìƒí•˜ê²Œ ì „ë‹¬ëœ ê²ƒì´ë¯€ë¡œ NULL ë°˜í™˜.
+		cin >> n[i]; // ì…ë ¥ì„ ë°›ì•„ ë„£ëŠ”ë‹¤.
+		if (cin.fail()) return 0; // ì…ë ¥ì˜ ì‹¤íŒ¨ì‹œ cin.fail()ì´ 1ì˜ ê°’ì„ ë°˜í™˜í•œë‹¤. ì…ë ¥ì˜ ì‹¤íŒ¨ë¼ë©´ return 0!
 		i++;
 	} while (cin.get() != '\n'); // 
 
-	if (n[0] == 1 || n[0] == 2) { // ¸í·É¾î°¡ »ğÀÔÀÌ¶ó¸é ´ç¿¬È÷ ÀÔ·ÂÀ¸·Î »ç¿ëÀÚ·ÎºÎÅÍ 2°³ÀÇ °ªÀ» ¹Ş¾Ò¾î¾ß °ÚÁÒ?
-		if (i == 1) return 0; // i°¡ 1ÀÌ¶ó¸é »ğÀÔÀÎµ¥ »ğÀÔÇÒ µ¥ÀÌÅ¸°¡ ¾ø´Ù´Â ¶æ!. ±×·¯¹Ç·Î return 0!
+	if (n[0] == 1 || n[0] == 2) { // ëª…ë ¹ì–´ê°€ ì‚½ì…ì´ë¼ë©´ ë‹¹ì—°íˆ ì…ë ¥ìœ¼ë¡œ ì‚¬ìš©ìë¡œë¶€í„° 2ê°œì˜ ê°’ì„ ë°›ì•˜ì–´ì•¼ ê² ì£ ?
+		if (i == 1) return 0; // iê°€ 1ì´ë¼ë©´ ì‚½ì…ì¸ë° ì‚½ì…í•  ë°ì´íƒ€ê°€ ì—†ë‹¤ëŠ” ëœ»!. ê·¸ëŸ¬ë¯€ë¡œ return 0!
 	}
 
-	return n; // ´Ü¼øÈ÷ InputÀÌ Á¦´ë·Î ÀÌ·ç¾îÁ³³ª È®ÀÎÇÏ´Â ¿ëµµ.
+	return n; // ë‹¨ìˆœíˆ Inputì´ ì œëŒ€ë¡œ ì´ë£¨ì–´ì¡Œë‚˜ í™•ì¸í•˜ëŠ” ìš©ë„.
 }
 void Menual()
 {
-	cout << left << setw(20) << "1. ½ºÅÃ¿¡ »ğÀÔ";
-	cout << left << "2. Å¥¿¡ »ğÀÔ" << endl;
-	cout << left << setw(20) << "3. ½ºÅÃ¿¡¼­ »èÁ¦";
-	cout << left << "4. Å¥¿¡¼­ »èÁ¦" << endl;
-	cout << left << setw(20) << "5. ½ºÅÃ ³»¿ë º¸±â";
-	cout << left << "6. Å¥ ³»¿ë º¸±â" << endl;
-	cout << left << "ÇÁ·Î±×·¥À» Á¾·áÇÏ½Ã·Á¸é 0À» ÀÔ·ÂÇØÁÖ¼¼¿ä!" << endl;
+	cout << left << setw(20) << "1. ìŠ¤íƒì— ì‚½ì…";
+	cout << left << "2. íì— ì‚½ì…" << endl;
+	cout << left << setw(20) << "3. ìŠ¤íƒì—ì„œ ì‚­ì œ";
+	cout << left << "4. íì—ì„œ ì‚­ì œ" << endl;
+	cout << left << setw(20) << "5. ìŠ¤íƒ ë‚´ìš© ë³´ê¸°";
+	cout << left << "6. í ë‚´ìš© ë³´ê¸°" << endl;
+	cout << left << "í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•˜ì‹œë ¤ë©´ 0ì„ ì…ë ¥í•´ì£¼ì„¸ìš”!" << endl;
 }
 
 int main()
 {
-	int arr[2]; // index 0¿¡´Â ½ÇÇàÇÒ ¸í·É,
+	int arr[2]; // index 0ì—ëŠ” ì‹¤í–‰í•  ëª…ë ¹,
 	int retvalue;
 	ChainQueue myQueue;
 	ChainStack myStack;
@@ -138,7 +138,7 @@ int main()
 		if (Input(arr)) {
 			switch (arr[0]) {
 			case 0:
-				cout << "ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù." << endl;
+				cout << "í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤." << endl;
 				return 0;
 			case 1:
 				myStack.Push(arr[1]);
@@ -147,10 +147,10 @@ int main()
 				myQueue.Push(arr[1]);
 				break;
 			case 3:
-				if(!myStack.Pop(retvalue)) cout << "ºó ½ºÅÃÀ» ´ë»óÀ¸·Î´Â »èÁ¦°¡ ºÒ°¡´ÉÇÕ´Ï´Ù." << endl;
+				if(!myStack.Pop(retvalue)) cout << "ë¹ˆ ìŠ¤íƒì„ ëŒ€ìƒìœ¼ë¡œëŠ” ì‚­ì œê°€ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤." << endl;
 				break;
 			case 4:
-				if(!myQueue.Pop(retvalue)) cout << "ºó Å¥¸¦ ´ë»óÀ¸·Î´Â »èÁ¦°¡ ºÒ°¡´ÉÇÕ´Ï´Ù." << endl;
+				if(!myQueue.Pop(retvalue)) cout << "ë¹ˆ íë¥¼ ëŒ€ìƒìœ¼ë¡œëŠ” ì‚­ì œê°€ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤." << endl;
 				break;
 			case 5:
 				myStack.PrintS();
@@ -159,12 +159,12 @@ int main()
 				myQueue.PrintQ();
 				break;
 			default:
-				cout << "Á¸ÀçÇÏÁö ¾Ê´Â ¸í·É¾îÀÔ´Ï´Ù." << endl;
+				cout << "ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ëª…ë ¹ì–´ì…ë‹ˆë‹¤." << endl;
 			}
 			
 		}
 		else {
-			cout << "Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù." << endl;
+			cout << "ì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤." << endl;
 			return 1;
 		}
 	}
