@@ -160,6 +160,7 @@ int main()
 				break;
 			default:
 				cout << "존재하지 않는 명령어입니다." << endl;
+				return 1;
 			}
 			
 		}
