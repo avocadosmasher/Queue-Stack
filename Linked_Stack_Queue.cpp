@@ -1,7 +1,7 @@
 // Stack & Queue Program using ChainNode, by Youngwoo Kim, email: rdd0426@gmail.com
 // Directory
-// Line 10 ~ 124 : declaration for classes & other functions
-// Line 126 ~ til the end : main function.
+// Line 10 ~ 127 : declaration for classes & other functions
+// Line 129 ~ til the end : main function.
 #include <iostream>
 #include <iomanip> // 입출력 형태를 이쁘게 하기위해 setw와 left를 사용할것임.
 
